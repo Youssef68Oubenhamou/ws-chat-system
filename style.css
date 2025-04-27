@@ -1,0 +1,35 @@
+body {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    .message-area {
+
+        height: 99vh;
+        width: 50%;
+        border: 3px solid salmon;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        input {
+
+            height: 50px;
+            width: 50%;
+
+        }
+
+        button {
+
+            height: 50px;
+            width: 20%;
+            margin-top: 3px;
+
+        }
+
+    }
+
+}
