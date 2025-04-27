@@ -8,6 +8,8 @@ let count = 0;
 
 btnStatus = false;
 
+let msgContainer;
+
 socket.addEventListener("open" , () => {
 
     count += 1;
@@ -28,6 +30,12 @@ socket.addEventListener("open" , () => {
 socket.addEventListener("message" , (e) => {
 
     let message = e.data;
+    msgContainer = message;
+    let msgArr = msgContainer.split(":");
+    let username = document.createElement("span");
+    username.className = "user";
+    msgArea.appendChild(username);
+    username.textContent = msgArr[0];
     let messageElem = document.createElement("p");
     messageElem.textContent = message;
     document.getElementById("msg-space").appendChild(messageElem);

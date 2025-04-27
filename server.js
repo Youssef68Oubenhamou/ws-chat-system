@@ -9,7 +9,7 @@ let connectionStatus;
 
 let clients = new Map();
 
-// Listening on any connection events to] the server using connection event Listener !
+// Listening on any connection events to the server using connection event Listener !
 server.on("connection" , function (sock) {
 
     let username = "User" + Math.floor(Math.random() * 1000);
