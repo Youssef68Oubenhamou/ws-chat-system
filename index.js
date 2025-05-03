@@ -4,17 +4,24 @@ const msgArea = document.getElementById("msg-area");
 
 const socket = new WebSocket("ws://localhost:8080");
 
-let count = 0;
+// let count = 0;
 
 btnStatus = false;
 
 let msgContainer;
 
+let username;
+
 socket.addEventListener("open" , () => {
 
-    count += 1;
+    // count += 1;
     console.log("connection established !");
     console.log("sending to server !");
+
+    username = "User" + Math.floor(Math.random() * 1000);
+
+    socket.send(username);
+
     sendBtn.addEventListener("click" , function () {
         
         btnStatus = true;
@@ -27,11 +34,15 @@ socket.addEventListener("open" , () => {
     
 });
 
-let arrData = [];
 socket.addEventListener("message" , (e) => {
 
-    arrData.push(e.data);
     let message = e.data;
+
+    let user = document.createElement("p");
+    user.className = "user";
+    user.textContent = username;
+    msgArea.appendChild(user);
+
     let messageElem = document.createElement("p");
     messageElem.textContent = message;
     document.getElementById("msg-space").appendChild(messageElem);
