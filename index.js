@@ -16,7 +16,7 @@ socket.addEventListener("open" , () => {
     console.log("connection established !");
     console.log("sending to server !");
     sendBtn.addEventListener("click" , function () {
-
+        
         btnStatus = true;
 
         socket.send(msgInput.value);
@@ -27,15 +27,11 @@ socket.addEventListener("open" , () => {
     
 });
 
+let arrData = [];
 socket.addEventListener("message" , (e) => {
 
+    arrData.push(e.data);
     let message = e.data;
-    msgContainer = message;
-    let msgArr = msgContainer.split(":");
-    let username = document.createElement("span");
-    username.className = "user";
-    msgArea.appendChild(username);
-    username.textContent = msgArr[0];
     let messageElem = document.createElement("p");
     messageElem.textContent = message;
     document.getElementById("msg-space").appendChild(messageElem);

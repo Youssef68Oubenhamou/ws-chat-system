@@ -4,6 +4,10 @@ const WebSocket = require("ws");
 // Defining the port by passing an object with a key port and it's value
 // to the WebSocket method Server() !
 const server = new WebSocket.WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({
+    server: httpsServer
+});
+
 
 let connectionStatus;
 
@@ -40,6 +44,7 @@ server.on("connection" , function (sock) {
 
                 // Send the message to the client
                 client.send(`${msg}`);
+                // client.send(clients.get(sock));
 
             }
             
