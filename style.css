@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgba(16, 15, 15, 0.838);
 
     .message-area {
 
@@ -20,9 +21,9 @@ body {
             left: 4%;
             top: 4%;
             height: 100px;
-            width: 150px;
+            width: 100px;
             background-color: green;
-            border-radius: 10px;
+            border-radius: 50%;
             color: white;
             display: flex;
             justify-content: center;

@@ -45,6 +45,7 @@ socket.addEventListener("message" , (e) => {
 
     let messageElem = document.createElement("p");
     messageElem.textContent = message;
+    messageElem.style.color = "green";
     document.getElementById("msg-space").appendChild(messageElem);
     console.log(`${e.data}`);
 
