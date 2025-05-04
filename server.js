@@ -9,6 +9,8 @@ let connectionStatus;
 
 let clients = new Map();
 
+let count = 0;
+
 // Listening on any connection events to the server using connection event Listener !
 server.on("connection" , function (sock) {
 
@@ -21,7 +23,13 @@ server.on("connection" , function (sock) {
 
         // msg = `${clients.get(sock)} : ` + msg;
 
-        clients.set(sock , msg);
+        if (clients.size < 2) {
+
+            clients.set(sock , msg);
+
+        }
+
+        count += 1;
 
         // Showing the data !
         console.log(`The data is received : ${msg}`);
@@ -32,8 +40,12 @@ server.on("connection" , function (sock) {
             // If the state of client is connected or the WebSocket is OPEN 
             if (client.readyState === WebSocket.OPEN) {
 
-                // Send the message to the client
-                client.send(`${clients.get(sock)} : ${msg}`);
+                if (count > 2) {
+
+                    // Send the message to the client
+                    client.send(`${clients.get(sock)} : ${msg}`);
+
+                }
                 // client.send(clients.get(sock));
 
             }
